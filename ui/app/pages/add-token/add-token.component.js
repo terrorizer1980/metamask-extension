@@ -27,12 +27,19 @@ class AddToken extends Component {
 
   static propTypes = {
     history: PropTypes.object,
-    setPendingTokens: PropTypes.func,
+    setPendingTokens: PropTypes.func.isRequired,
     pendingTokens: PropTypes.object,
-    clearPendingTokens: PropTypes.func,
+    clearPendingTokens: PropTypes.func.isRequired,
     tokens: PropTypes.array,
     identities: PropTypes.object,
     mostRecentOverviewPage: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    history: {},
+    pendingTokens: {},
+    tokens: [],
+    identities: {},
   }
 
   state = {
