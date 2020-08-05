@@ -19,7 +19,7 @@
           height: 61px;
 
           input {
-            @extend %H4;
+            @include H4;
 
             font-weight: bold;
             color: $Black-100;
@@ -119,20 +119,20 @@
       }
 
       &__primary-label {
-        @extend %H4;
+        @include H4;
 
         font-weight: bold;
       }
 
       &__secondary-label,
       &__right-primary-label {
-        @extend %H5;
+        @include H5;
 
         color: $Black-500;
       }
 
       &__right-secondary-label {
-        @extend %H5;
+        @include H5;
 
         color: $Black-500;
         opacity: 0.5;
@@ -141,7 +141,7 @@
   }
 
   &__placeholder {
-    @extend %H4;
+    @include H4;
 
     padding: 16px;
     color: $Black-500;
