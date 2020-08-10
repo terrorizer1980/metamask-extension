@@ -34,12 +34,6 @@ import log from 'loglevel'
 import LocalMessageDuplexStream from 'post-message-stream'
 import { initProvider } from '@metamask/inpage-provider'
 
-<<<<<<< HEAD
-// TODO:deprecate:2020
-import setupWeb3 from './lib/setupWeb3.js'
-
-=======
->>>>>>> remove web3 injection
 restoreContextAfterImports()
 
 log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn')
