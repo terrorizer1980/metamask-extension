@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tooltip from '../tooltip'
+import Tooltip from '../tooltip-v2'
 
 const positionArrowClassMap = {
   top: 'info-tooltip__top-tooltip-arrow',
@@ -18,9 +18,11 @@ export default function InfoTooltip ({
       <Tooltip
         interactive
         position={position}
-        title={contentText}
+        containerClassName="info-tooltip__tooltip-container"
         tooltipInnerClassName="info-tooltip__tooltip-content"
         tooltipArrowClassName={positionArrowClassMap[position]}
+        html={contentText}
+        theme="info"
       >
         <img src="images/mm-info-icon.svg" />
       </Tooltip>
