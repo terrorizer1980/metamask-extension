@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import classnames from 'classnames'
 
 class ReactTooltip extends Component {
   static propTypes = {
@@ -11,8 +10,6 @@ class ReactTooltip extends Component {
     position: PropTypes.oneOf(['left', 'top', 'right', 'bottom']),
     fixed: PropTypes.bool,
     space: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    tooltipArrowClassName: PropTypes.string,
-    tooltipInnerClassName: PropTypes.string,
   }
 
   static defaultProps = {
@@ -23,17 +20,16 @@ class ReactTooltip extends Component {
   }
 
   componentDidMount = () => {
-    const { tooltipArrowClassName, tooltipInnerClassName } = this.props
     this.container = this.props.container || document.body
     /* eslint-disable react/no-find-dom-node */
     this.componentEl = ReactDOM.findDOMNode(this)
     this.tooltipEl = document.createElement('div')
 
     const tooltipArrowEl = document.createElement('div')
-    tooltipArrowEl.className = classnames('tooltip-arrow', tooltipArrowClassName)
+    tooltipArrowEl.className = 'tooltip-arrow'
 
     const tooltipContentEl = document.createElement('div')
-    tooltipContentEl.className = classnames('tooltip-inner', tooltipInnerClassName)
+    tooltipContentEl.className = 'tooltip-inner'
     tooltipContentEl.textContent = this.props.title
 
     this.tooltipEl.appendChild(tooltipArrowEl)
@@ -171,15 +167,9 @@ class ReactTooltip extends Component {
   }
 }
 
-function Tooltip ({ position, title, children, tooltipArrowClassName, tooltipInnerClassName }) {
+function Tooltip ({ position, title, children }) {
   return (
-    <ReactTooltip
-      position={position}
-      title={title}
-      tooltipArrowClassName={tooltipArrowClassName}
-      tooltipInnerClassName={tooltipInnerClassName}
-      fixed
-    >
+    <ReactTooltip position={position} title={title} fixed>
       {children}
     </ReactTooltip>
   )
@@ -194,8 +184,6 @@ Tooltip.propTypes = {
   position: PropTypes.string,
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
-  tooltipArrowClassName: PropTypes.string,
-  tooltipInnerClassName: PropTypes.string,
 }
 
 export default Tooltip
