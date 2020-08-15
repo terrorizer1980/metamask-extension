@@ -40,7 +40,9 @@ export function Approve () {
     <div
       style={containerStyle}
       onClick={(event) => {
-        if (clickToLookMode) {
+        const isButtonClick = event.target.classList.contains('button-group__button')
+        if (clickToLookMode && !isButtonClick) {
+          setLookAtDirection(null)
           setClickedTarget({ x: event.clientX, y: event.clientY })
         }
       }}

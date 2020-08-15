@@ -67,12 +67,6 @@ export default class Mascot extends Component {
     this.refollowMouse()
   }
 
-  updateLookAt (target) {
-    this.logo.lookAt(target)
-    this.logo.startAnimation()
-    this.logo.renderScene()
-  }
-
   componentDidMount () {
     this.mascotContainer.current.appendChild(this.logo.container)
     this.directionTargetMap = directionTargetGenerator(this.mascotContainer.current.getBoundingClientRect())
@@ -80,10 +74,10 @@ export default class Mascot extends Component {
     const { lookAtTarget, lookAtDirection } = this.props
 
     if (lookAtTarget?.x && lookAtTarget?.y) {
-      this.updateLookAt(lookAtTarget)
+      this.logo.lookAtAndRender(lookAtTarget)
     }
     if (lookAtDirection) {
-      this.updateLookAt(this.directionTargetMap[lookAtDirection])
+      this.logo.lookAtAndRender(this.directionTargetMap[lookAtDirection])
     }
   }
 
@@ -92,10 +86,10 @@ export default class Mascot extends Component {
     const { lookAtTarget = {}, followMouse, lookAtDirection } = this.props
 
     if (lookAtDirection && prevDirection !== lookAtDirection) {
-      this.updateLookAt(this.directionTargetMap[lookAtDirection])
+      this.logo.lookAtAndRender(this.directionTargetMap[lookAtDirection])
     }
     if (lookAtTarget?.x !== prevTarget?.x || lookAtTarget?.y !== prevTarget?.y) {
-      this.updateLookAt(lookAtTarget)
+      this.logo.lookAtAndRender(lookAtTarget)
     }
     if (prevFollowMouse !== followMouse) {
       this.unfollowMouse()
